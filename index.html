@@ -135,7 +135,7 @@ section{
 }
 
 .button-group{
-  margin-top:30px;
+  margin-top:35px;
 }
 
 /* ================= GRID ================= */
@@ -148,7 +148,6 @@ section{
 }
 
 .item{
-  cursor:pointer;
   background:rgba(255,255,255,0.05);
   padding:25px;
   border-radius:20px;
@@ -156,6 +155,7 @@ section{
   backdrop-filter:blur(10px);
   border:1px solid rgba(255,255,255,0.1);
   transition:0.3s;
+  cursor:pointer;
 }
 
 .item:hover{
@@ -334,7 +334,7 @@ section{
   <a href="#contact">Contact</a>
 </nav>
 
-<a href="https://wa.me/+628127785566" target="_blank" class="btn">
+<a href="https://wa.me/+629127785566" target="_blank" class="btn">
 Minta Penawaran
 </a>
 
@@ -357,15 +357,11 @@ Rindo Solusi Berjaya menyediakan berbagai jenis O-ring, seal, rubber, coupling, 
 </p>
 
 <div class="button-group">
-
-<a href="#produk" class="primary">
-Lihat Produk
-</a>
+<a href="#produk" class="primary">Lihat Produk</a>
 
 <a href="https://wa.me/+628127785566" target="_blank" class="secondary">
 Hubungi Tim
 </a>
-
 </div>
 
 <div class="stats">
@@ -413,59 +409,39 @@ Ready Stock
 
 <div class="grid">
 
-<div class="item"
-onclick="goToProduct('coupling')">
-
+<div class="item" onclick="goToProduct('coupling')">
 <div style="background:#1f5f4a;width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:auto;margin-bottom:10px">
 C
 </div>
-
 Coupling
-
 </div>
 
-<div class="item"
-onclick="goToProduct('seal')">
-
+<div class="item" onclick="goToProduct('seal')">
 <div style="background:#1f5f4a;width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:auto;margin-bottom:10px">
 S
 </div>
-
 Seal
-
 </div>
 
-<div class="item"
-onclick="goToProduct('oring')">
-
+<div class="item" onclick="goToProduct('oring')">
 <div style="background:#1f5f4a;width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:auto;margin-bottom:10px">
 O
 </div>
-
 O-Ring
-
 </div>
 
-<div class="item"
-onclick="goToProduct('fan')">
-
+<div class="item" onclick="goToProduct('fan')">
 <div style="background:#1f5f4a;width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:auto;margin-bottom:10px">
 F
 </div>
-
 Cooling Fan
-
 </div>
 
-<div class="item"
-onclick="goToProduct('rubber')">
-
+<div class="item" onclick="goToProduct('rubber')">
 <div style="background:#1f5f4a;width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:auto;margin-bottom:10px">
 R
 </div>
-
 Rubber
-
 </div>
 
 </div>
@@ -492,7 +468,7 @@ Konsultasi produk
 <h1>Product</h1>
 
 <p>
-Macam-macam O-ring, seal, rubber, coupling, cooling fan.
+Macam-macam O-ring, seal, rubber, coupling, cooling fan. Pilih jenis barang untuk menampilkan visual produknya.
 </p>
 
 <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
@@ -536,27 +512,32 @@ Pilihan coupling lengkap untuk transmisi stabil dan presisi industri.
 <div style="margin-top:20px" id="product-options">
 
 <span class="chip active"
-onclick="selectChip(this,'coupling.png.jpeg')">
+onclick="selectChip(this,'coupling.png.jpeg',
+'Universal Coupling tersedia ukuran 32mm dan 10mm untuk transmisi industri.')">
 Universal Coupling
 </span>
 
 <span class="chip"
-onclick="selectChip(this,'gear.png.jpeg')">
+onclick="selectChip(this,'gear.png.jpeg',
+'Gear Coupling tersedia 29T, NL4-32, RGF 65 Gigi 42, RGF 55 Gigi 45, RGF42 Gigi 37, RGF38 Gigi 44 dan masih banyak lagi untuk mesin industri.')">
 Gear Coupling
 </span>
 
 <span class="chip"
-onclick="selectChip(this,'flange.png.jpeg')">
+onclick="selectChip(this,'flange.png.jpeg',
+'Flange Coupling tersedia ukuran 4mm, 5mm, 6mm, 8mm, 10mm dan 14mm untuk kebutuhan shaft industri.')">
 Flange Coupling
 </span>
 
 <span class="chip"
-onclick="selectChip(this,'fluid.png.jpeg')">
+onclick="selectChip(this,'fluid.png.jpeg',
+'Fluid Coupling tersedia YOX 175 untuk sistem transmisi mesin.')">
 Fluid Coupling
 </span>
 
 <span class="chip"
-onclick="selectChip(this,'flexible.png.jpeg')">
+onclick="selectChip(this,'flexible.png.jpeg',
+'Flexible Coupling tersedia L55, L40, L35, L25 dan L5 untuk meredam getaran mesin.')">
 Flexible Coupling
 </span>
 
@@ -614,7 +595,7 @@ Konsultasi & penawaran cepat via WhatsApp
 
 <br>
 
-<a href="https://wa.me/+628127785566" target="_blank" class="primary">
+<a href="https://wa.me/+62127785566" target="_blank" class="primary">
 Chat WhatsApp
 </a>
 
@@ -628,13 +609,13 @@ Chat WhatsApp
 
 function goToProduct(type){
 
-  location.href='#produk';
+  document.getElementById('produk').scrollIntoView({
+    behavior:'smooth'
+  });
 
   setTimeout(()=>{
-
     showProduct(type);
-
-  },200);
+  },300);
 
 }
 
@@ -662,27 +643,32 @@ function showProduct(type){
     options.innerHTML=`
 
       <span class="chip active"
-      onclick="selectChip(this,'coupling.png.jpeg')">
+      onclick="selectChip(this,'coupling.png.jpeg',
+      'Universal Coupling tersedia ukuran 32mm dan 10mm untuk transmisi industri.')">
       Universal Coupling
       </span>
 
       <span class="chip"
-      onclick="selectChip(this,'gear.png.jpeg')">
+      onclick="selectChip(this,'gear.png.jpeg',
+      'Gear Coupling tersedia 29T, NL4-32, RGF 65 Gigi 42, RGF 55 Gigi 45, RGF42 Gigi 37, RGF38 Gigi 44 dan masih banyak lagi untuk mesin industri.')">
       Gear Coupling
       </span>
 
       <span class="chip"
-      onclick="selectChip(this,'flange.png.jpeg')">
+      onclick="selectChip(this,'flange.png.jpeg',
+      'Flange Coupling tersedia ukuran 4mm, 5mm, 6mm, 8mm, 10mm dan 14mm untuk kebutuhan shaft industri.')">
       Flange Coupling
       </span>
 
       <span class="chip"
-      onclick="selectChip(this,'fluid.png.jpeg')">
+      onclick="selectChip(this,'fluid.png.jpeg',
+      'Fluid Coupling tersedia YOX 175 untuk sistem transmisi mesin.')">
       Fluid Coupling
       </span>
 
       <span class="chip"
-      onclick="selectChip(this,'flexible.png.jpeg')">
+      onclick="selectChip(this,'flexible.png.jpeg',
+      'Flexible Coupling tersedia L55, L40, L35, L25 dan L5 untuk meredam getaran mesin.')">
       Flexible Coupling
       </span>
 
@@ -702,12 +688,14 @@ function showProduct(type){
     options.innerHTML=`
 
       <span class="chip active"
-      onclick="selectChip(this,'oil.png.jpeg')">
+      onclick="selectChip(this,'oil.png.jpeg',
+      'Oil Seal tersedia ukuran LUP16, LUP19 dan LUP20 industri lainnya.')">
       Oil Seal
       </span>
 
       <span class="chip"
-      onclick="selectChip(this,'mechanical.png.jpeg')">
+      onclick="selectChip(this,'mechanical.png.jpeg',
+      'Mechanical Seal tersedia ukuran SMZ135, SMZ130, SMZ128 dan SMZ125 untuk pompa industri.')">
       Mechanical Seal
       </span>
 
@@ -727,12 +715,14 @@ function showProduct(type){
     options.innerHTML=`
 
       <span class="chip active"
-      onclick="selectChip(this,'nbr-oring.png.jpeg')">
+      onclick="selectChip(this,'nbr-oring.png.jpeg',
+      'NBR O-Ring tersedia ukuran 2,0MM D10MM sampai 2,0MM D100MM dan 2,5MM D10MM sampai 2,5MM D100MM.')">
       NBR
       </span>
 
       <span class="chip"
-      onclick="selectChip(this,'viton-oring.png.jpeg')">
+      onclick="selectChip(this,'viton-oring.png.jpeg',
+      'Viton O-Ring tahan panas tinggi tersedia ukuran P3, P5, P9, P11, P12, P16 dan P19 untuk chemical industry.')">
       Viton
       </span>
 
@@ -752,7 +742,8 @@ function showProduct(type){
     options.innerHTML=`
 
       <span class="chip active"
-      onclick="selectChip(this,'industrial-exhaust-fan.png.jpeg')">
+      onclick="selectChip(this,'industrial-exhaust-fan.png.jpeg',
+      'Industrial Exhaust Fan tersedia ukuran 10 inch, 14 inch dan 16 inch.')">
       Industrial Exhaust Fan
       </span>
 
@@ -772,7 +763,8 @@ function showProduct(type){
     options.innerHTML=`
 
       <span class="chip active"
-      onclick="selectChip(this,'rubber-sheet.png.jpeg')">
+      onclick="selectChip(this,'rubber-sheet.png.jpeg',
+      'Rubber Sheet tersedia 100CMx6MM, 100CMx8mm dan 100CMx10mm.')">
       Rubber Sheet
       </span>
 
@@ -781,7 +773,7 @@ function showProduct(type){
 
 }
 
-function selectChip(el,img){
+function selectChip(el,img,newDesc){
 
   document.querySelectorAll('.chip').forEach(c=>{
     c.classList.remove('active');
@@ -790,6 +782,8 @@ function selectChip(el,img){
   el.classList.add('active');
 
   document.getElementById('product-img').src=img;
+
+  document.getElementById('product-desc').innerText=newDesc;
 }
 
 </script>
